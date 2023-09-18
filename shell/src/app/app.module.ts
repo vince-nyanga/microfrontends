@@ -10,13 +10,13 @@ import { AppInitService } from './app.init.service';
   declarations: [AppComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (initializer: AppInitService) =>
-    //     initializer.loadMicrofrontends(),
-    //   deps: [AppInitService],
-    //   multi: true,
-    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (initializer: AppInitService) => () =>
+        initializer.loadMicrofrontends(),
+      deps: [AppInitService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
